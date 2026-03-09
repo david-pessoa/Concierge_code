@@ -3,6 +3,7 @@
 #define pin3 8
 #define pin4 7
 
+// Declara funções responsáveis pelos movimentos de ir para frente, ré, direita, esquerda e para parar o veículo, respectivamente
 void moveFrente(){
   digitalWrite(pin1, LOW);
   digitalWrite(pin2, HIGH);
@@ -42,3 +43,4 @@ void parar(){
   digitalWrite(pin3, LOW);
   digitalWrite(pin4, LOW);
 }
+
