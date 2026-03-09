@@ -9,7 +9,7 @@
 
 HX711 scale;
 float peso = 0;
-char comando;
+char comando; //Caractere representado o comando vindo do controle virtual do celular
 LiquidCrystal_I2C lcd(0x27,20,4);
 SoftwareSerial btSerial(pinRx, pinTx); // RX, TX
 
@@ -34,6 +34,7 @@ void setup()
 
 void loop() 
 {
+  // Se um botão do controle virtual está sendo pressionado, atualiza valor de comando
   if (btSerial.available())
   {
     comando = btSerial.read();
@@ -61,7 +62,7 @@ void loop()
         moveRe();
         break;
       }
-    case 'W':
+    case 'W': //chama função para recalcular o peso da balança
     {
       ativa_balanca();
       break;
@@ -74,6 +75,7 @@ void loop()
   }
 }
 
+//Função responsável por atualizar a mensagem exibida no display
 void ativa_balanca()
 {
  peso = scale.get_units(1); 
@@ -102,3 +104,4 @@ void ativa_balanca()
   lcd.print(peso, 2);
   }
 }
+
